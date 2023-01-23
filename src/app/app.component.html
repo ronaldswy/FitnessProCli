@@ -1,0 +1,116 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <img
+      src="assets/img/fit5.png"
+      alt="" width="90" height="90">
+    <a class="navbar-brand" href="#">Fitness Pro GYM</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        <a class="nav-link" routerLink="/form-components" routerLinkActive="active">Inscribirse</a>
+        <a class="nav-link" routerLink="/fileupload" routerLinkActive="active">Pagar</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!--img src="../assets/img/fondo.jpg" class="img-fluid"
+  style="position: absolute; right: 0; top: 0; z-index: -100; opacity: 0.75;"-->
+
+<div class="container p-5">
+  <router-outlet></router-outlet>
+</div>
+<br><br>
+<footer class="footer-section">
+  <div class="container">
+    <div class="footer-cta pt-5 pb-5">
+      <div class="row">
+        <div class="col-xl-4 col-md-4 mb-30">
+          <div class="single-cta">
+            <i class="fa fa-map-marker"></i>
+            <div class="cta-text">
+              <h4>Encuéntranos</h4>
+              <span>Av. Chone km5</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-4 mb-30">
+          <div class="single-cta">
+            <i class="fa fa-phone"></i>
+            <div class="cta-text">
+              <h4>Contactanos</h4>
+              <span>0956543355</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-4 mb-30">
+          <div class="single-cta">
+            <i class="fa fa-envelope-open"></i>
+            <div class="cta-text">
+              <h4>Mail</h4>
+              <span>fitnesspro@info.com</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-content pt-5 pb-5">
+      <div class="row">
+        <div class="col-xl-4 col-lg-4 mb-50">
+          <div class="footer-widget">
+            <div class="footer-logo">
+              <a href="index.html">
+                <img
+                  src="assets/img/fit3.png"
+                  class="img-fluid" alt="logo" width="140" height="140">
+              </a>
+            </div>
+            <div class="footer-text">
+              <p>Para tener éxito necesitas dedicar el 100% de tu entrenamiento, dieta y enfoque mental. Frase
+                Motivación Gym de Arnold Schwarzenegger</p>
+            </div>
+            <div class="footer-social-icon">
+              <!--span>Follow us</span-->
+              <a href="#"><i class="fa fa-facebook-f facebook-bg"></i></a>
+              <a href="#"><i class="fa fa-twitter twitter-bg"></i></a>
+              <a href="#"><i class="fa fa-google-plus google-bg"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+          <div class="footer-widget">
+            <div class="footer-widget-heading">
+              <h3>Useful Links</h3>
+            </div>
+            <ul>
+              <li><a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a></li>
+              <li><a class="nav-link" routerLink="/form-components" routerLinkActive="active">Inscripciones</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="copyright-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+          <div class="copyright-text">
+            <p>Copyright &copy; 2023, All Right Reserved Grupo 5</p>
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+          <div class="footer-menu">
+            <ul>
+              <li><a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a></li>
+              <li><a class="nav-link" routerLink="/form-components" routerLinkActive="active">Inscripciones</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

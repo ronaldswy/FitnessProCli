@@ -1,0 +1,62 @@
+<div class="todo">
+
+
+  <img class="center" src="assets/img/fit.svg" alt="" width="350" height="350">
+  <h1>Comprobante de pago</h1>
+  <br>
+  <h3>Envíe su comprobante de pago para poder aprobar su inscripción y darle los detalles de su compra.</h3>
+  <h6>Verifique que haya escogido el plan correcto, si en caso desea cambiar de plan envíe otra solicitud de
+    inscripción.
+  </h6>
+  <br><br><br>
+  <div class="mainContainer">
+
+    <div class="content">
+      <div class="header">
+        <div class="text">
+          <h5>Subir archivo</h5>
+        </div>
+
+      </div>
+      <div class="row margin25">
+
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+
+          <br><br><br>
+          <div class="input-group">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">Cedula</span>
+              <input type="text" class="form-control" placeholder="Cédula" aria-label="Cédula"
+                aria-describedby="basic-addon1" [(ngModel)]="cedula" name="cedula">
+            </div>
+
+            <div class="input-group mb-3" >
+              <input type="file" class="form-control" id="inputGroupFile02" aria-describedby="inputGroupFile02"
+                (change)="uploadImage($event)" enctype="multipart/form-data">
+                <button style="margin: 0% auto;" id="btn" type="button" class="btn btn-success"
+            (click)="navegar()">Enviar</button>
+            </div>
+
+            <!--div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile04"
+                aria-describedby="inputGroupFileAddon04" aria-label="Upload" (change)="uploadImage($event)"
+                enctype="multipart/form-data">
+              <br>
+            </div>
+            <button style="margin: 0% auto;" type="submit" id="btn" class="btn btn-outline-success" (click)="navegar()">ENVIAR</button-->
+          </div>
+
+          <br><br>
+          <br><br>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

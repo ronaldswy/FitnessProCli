@@ -1,0 +1,204 @@
+<body>
+    <section class="formstyle">
+        <h2 class="center">Inscribirse a un Plan</h2>
+        <br>
+        <img class="center" src="assets/img/fit5.png" alt="" width="200" height="200">
+        <br>
+        <form [formGroup]="form" (ngSubmit)="save($event)">
+
+            <h5>Ingresa tus datos</h5>
+            <br>
+
+            <!--NOMBRE COMPLETO-->
+            <div class="input-group mb-3">
+                <!--AQUI SE MODIFICO-->
+                <span class="input-group-text" id="basic-addon1">Nombres y Apellidos</span>
+                <input type="text" class="form-control" formControlName="nameCtrl" name="nameCtrl" id="nameCtrl"
+                    placeholder="Escriba sus nombres completos" aria-label="Username" aria-describedby="basic-addon1"
+                    [(ngModel)]="nombres_completos">
+
+            </div>
+            <!--VALIDACION NOMBRE-->
+            <div *ngIf="nameField?.errors && form.get('nameCtrl')?.touched">
+                <p *ngIf="nameField?.hasError('required')">Debe llenar su nombre completo</p>
+            </div>
+
+
+            <!--CEDULA-->
+            <div class="input-group mb-3">
+                <!--AQUI SE MODIFICO-->
+                <span class="input-group-text" id="basic-addon1">Cédula</span>
+                <input type="text" class="form-control" formControlName="cedulaCtrl" name="cedulaCtrl" id="cedulaCtrl"
+                    placeholder="Ingrese su cédula" aria-label="Cédula" aria-describedby="basic-addon1"
+                    [(ngModel)]="cedula">
+            </div>
+            <!--VALIDACION CEDULA-->
+            <div *ngIf="cedulaField?.errors && form.get('cedulaCtrl')?.touched">
+                <p *ngIf="cedulaField?.hasError('required')">Debe ingresar una número de cédula</p>
+                <p *ngIf="cedulaField?.hasError('minlength')">Debe contener 10 digitos</p>
+                <p *ngIf="cedulaField?.hasError('maxlength')">Solo debe contener un maximo de 10 digitos</p>
+                <p *ngIf="cedulaField?.hasError('pattern')">Debe contener solo numeros</p>
+            </div>
+
+            <!--EMAIL-->
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="email" formControlName="emailCtrl" class="form-control" name="emailCtrl" id="emailCtrl"
+                    class="form-control" placeholder="ejemplo@email.com" aria-label="email"
+                    aria-describedby="basic-addon1" [(ngModel)]="correo">
+            </div>
+            <!--VALIDACION EMAIL-->
+            <div *ngIf="emailField?.errors && form.get('emailCtrl')?.touched">
+                <p *ngIf="emailField?.hasError('required')">Este campo debe tener un email</p>
+            </div>
+
+            <!--CEDULA-->
+            <div class="input-group mb-3">
+                <!--AQUI SE MODIFICO-->
+                <span class="input-group-text" id="basic-addon1">+593</span>
+                <input type="text" class="form-control" formControlName="telCrl" name="telCrl" id="telCrl"
+                    placeholder="93456755" aria-label="Cédula" aria-describedby="basic-addon1" [(ngModel)]="telefono">
+                <span class="input-group-text" id="basic-addon1">Teléfono</span>
+            </div>
+            <!--VALIDACION CEDULA-->
+            <div *ngIf="telField?.errors && form.get('telCrl')?.touched">
+                <p *ngIf="telField?.hasError('required')">Debe ingresar un numero de télefono</p>
+                <p *ngIf="telField?.hasError('minlength')">Su numero debe contener 9 digitos</p>
+                <p *ngIf="telField?.hasError('maxlength')">Solo debe contener un maximo de 9 digitos</p>
+                <p *ngIf="telField?.hasError('pattern')">Escriba un numero de telefono correcto</p>
+                <p *ngIf="telField?.hasError('pattern')">Debe ingresar un numero de télefono</p>
+            </div>
+
+            <!--SELECTOPTIONS-->
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Ocupación</label>
+                <select class="form-select" id="inputGroupSelect01" formControlName="categoryCtrl"
+                    [(ngModel)]="ocupacion">
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Docente">Docente</option>
+                    <option value="Trabajador">Trabajador</option>
+                    <option value="Atleta">Atleta</option>
+                    <option value="Fisicoculturista">Fisicoculturista</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <!--VALIDACION CATEGORIA-->
+            <div *ngIf="categoryField?.errors && form.get('categoryCtrl')?.touched">
+                <p *ngIf="categoryField?.hasError('required')">Debe elegir una Ocupación</p>
+            </div>
+
+
+
+            <!--SEXO-->
+            <!--RADIOBUTTON-->
+            <span class="input-group-text" id="basic-addon1">Género</span>
+            <br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="genderCtrl" name="genderCtrl"
+                    id="genderCtrl" value="Hombre" [(ngModel)]="genero">
+                <label class="form-check-label" for="inlineRadio1">Hombre</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="genderCtrl" name="genderCtrl"
+                    id="genderCtrl" value="Mujer" [(ngModel)]="genero">
+                <label class="form-check-label" for="inlineRadio2">Mujer</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" formControlName="genderCtrl" name="genderCtrl"
+                    id="genderCtrl" value="Binario" [(ngModel)]="genero">
+                <label class="form-check-label" for="inlineRadio2">No binario</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genderCtrl" id="genderCtrl" value="Otro"
+                    [(ngModel)]="genero">
+                <label class="form-check-label" for="inlineRadio2">Otro</label>
+            </div>
+            <!--VALIDACION GENERO-->
+            <div *ngIf="genderField?.errors && form.get('genderCtrl')?.touched">
+                <p *ngIf="genderField?.hasError('required')">Seleccione su género</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <!--RADIOBoton-->
+            <h5>Elige tu plan</h5>
+            <br>
+            <div class="input-group mb-3">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+
+                    <input type="radio" class="btn-check" formControlName="planCtrl" name="planCtrl" id="btnradio1"
+                        autocomplete="off" value="Básico" checked [(ngModel)]="plan">
+                    <label class="btn btn-outline-info" for="btnradio1"><label for=""></label>
+                        <h5>Básico</h5><label for=""></label>
+                    </label>
+
+                    <input type="radio" class="btn-check" formControlName="planCtrl" name="planCtrl" id="btnradio2"
+                        autocomplete="off" value="Estándar" [(ngModel)]="plan">
+                    <label class="btn btn-outline-primary" for="btnradio2"><label for=""></label>
+                        <h5>Estándar</h5><label for=""></label>
+                    </label>
+
+                    <input type="radio" class="btn-check" formControlName="planCtrl" name="planCtrl" id="btnradio3"
+                        autocomplete="off" value="Avanzado" [(ngModel)]="plan">
+                    <label class="btn btn-outline-success" for="btnradio3"><label for=""></label>
+                        <h5>Avanzado</h5><label for=""></label>
+                    </label>
+                </div>
+            </div>
+            <!--VALIDACION GENERO-->
+            <div *ngIf="planField?.errors && form.get('planCtrl')?.touched">
+                <p *ngIf="planField?.hasError('required')">Selecciona un plan</p>
+            </div>
+            <br>
+            <br>
+
+
+
+            <!--TERMINOS Y CONDICIONES-->
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" formControlName="terminosCtrl"
+                    name="terminosCtrl">
+                <label class="form-check-label" for="exampleCheck1">Términos y condiciones
+                </label>
+            </div>
+            <!--VALIDACION TERMINOS-->
+            <div *ngIf="termField?.errors && form.get('terminosCtrl')?.touched">
+                <p *ngIf="termField?.hasError('required')">Acepte los terminos y condiciones para continuar</p>
+            </div>
+
+
+            <br>
+            <!--CAPTCHA-->
+            <label>Verifica que no eres un robot</label>
+            <ngx-recaptcha2 #captchaEle [siteKey]="siteKey" formControlName="recaptcha"></ngx-recaptcha2>
+            <br>
+            <br>
+
+            <button type="submit" class="btn btn-light" [disabled]="!form.valid">Enviar</button>
+
+        </form>
+    </section>
+    <br><br><br><br>
+</body>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let formulario = document.getElementById('formul');
+        formulario.addEventListener('submit', function () {
+            formulario.reset();
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+<!--6Le4Wj8jAAAAAJlyo46G4Pp1K5iLPrZeiga6xR6E   [disabled]="!form.valid"-->
+<!---6Le4Wj8jAAAAANOLPXsmziRmHnwzgfTFIlc0cAU4-->
