@@ -21,7 +21,7 @@ export class FormComponentsComponent implements OnInit {
   ocupacion: string = "";
   genero: string = "";
   plan: string = "";
-
+  hola="";
   form: FormGroup;
   captcha: string;
   email: string;
