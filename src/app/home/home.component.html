@@ -1,117 +1,145 @@
+<!--CABECERA-->
+<div>
+  <h1>Registro de Pagos</h1>
+  <br>
+  <p>Revisa los pagos de tus clientes, acepta o rechaza los pagos de las inscripciones</p>
+</div>
+<br><br><br>
 
-<div class="container">
-  <br><br>
-  <br><br>
-  <div class="row">
 
-    <div class="col">
-      <img src="assets/img/fit.svg" alt="">
+
+<!--EDITAR TABLA PARA MOSTRAR DATOS-->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <!-- Bootstrap 3.3.7 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- Jquery 3.2.1  -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!-- Bootstrap 3.3.7 JS  -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    function accion(accion, id) {
+      $(document).ready(function () {
+        $('#accion-modal').html(accion);
+        $('#id-modal').html(id);
+        $('#botonUltimaAccion').removeClass('hidden');
+      })
+    }
+
+  </script>
+</head>
+
+<!--ACTUALIZAR ESTADO-->
+
+<body>
+  <h4>Actualización de estado</h4>
+  <br>
+  <form>
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="inputGroupSelect01">Cédula</label>
+      <input type="text" class="form-control" placeholder="Cédula" aria-label="Cédula" [(ngModel)]="cedula"
+        [ngModelOptions]="{standalone: true}" readonly="readonly">
+      <label class="input-group-text" for="inputGroupSelect01">Estado</label>
+      <select class="form-select" id="inputGroupSelect01" [(ngModel)]="estado_pago"
+        [ngModelOptions]="{standalone: true}">
+        <option value="Aceptado">Aceptado</option>
+        <option value="Rechazado">Rechazado</option>
+      </select>
+      <!-- <input type="text" class="form-control" placeholder="Cédula" aria-label="Cédula" [(ngModel)]="estado_pago"
+        [ngModelOptions]="{standalone: true}"> -->
+      <button type="submit" class="btn btn-dark" (click)="save()">Actualizar</button>
     </div>
+  </form>
 
-    <div class="col" style="margin-left: 80px;">
-      <h1 style="font-size: 55px; font-family: 'Archivo', sans-serif; " >Es tiempo de mejorar</h1>
-      <br>
-      <h4>Nuestro gimnasio está equipado con la fuerza más apta de la industria</h4>
-    </div>
+  <br><br>
 
+  <!--TABLA REGISTROS-->
+  <h4>Registro de pagos</h4>
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="active">Nombres</th>
+          <th class="active">Telefono</th>
+          <th class="active">correo</th>
+          <th class="active">Cedula</th>
+          <th class="active">Plan</th>
+          <th class="active">Comprobante</th>
+          <th class="active">Estado de pago</th>
+          <th class="active">Accion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let StudentItem of StudentArray">
+          <td>{{StudentItem.nombres_completos}}</td>
+          <td>{{StudentItem.telefono}}</td>
+          <td>{{StudentItem.correo}}</td>
+          <td>{{StudentItem.cedula}}</td>
+          <td>{{StudentItem.plan}}</td>
+          <img *ngIf="StudentItem.foto; else noFoto" [src]="StudentItem.foto" width="400px" height="400" alt="">
+          <ng-template #noFoto>
+            <p>El cliente aun no envia comprobante de pago</p>
+          </ng-template>
+          <td>{{StudentItem.estado_pago}}</td>
+          <td>
+
+            <a onclick="accion('ver',1);" href="#" class="btn btn-xs btn-primary" data-toggle="modal"
+              data-target="#myModalmostrar" role="button" style="margin: 5px; ">Aceptar</a>
+
+            <a href="#" onclick="accion('editar',1)" class="btn btn-xs btn-danger " data-toggle="modal"
+              data-target="#myModalmostrar" role="button" style="margin: 5px; ">Rechazar</a>
+
+            <button class="btn btn-xs btn-dark " data-toggle="modal" data-target="#myModalmostrar" role="button"
+              style="margin: 5px; " (click)="setUpdate(StudentItem)">Actualizar Estado</button>
+            <!-- <button type="button" class="btn btn-success" (click)="setUpdate(StudentItem)">Edit</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <!---BOTON Actualizar Tabla-->
+    <button type="button" id="botonUltimaAccion" class="btn btn-primary hidden" data-toggle="modal"
+      data-target="#myModalmostrar">Actualizar</button>
   </div>
-  <br><br><br><br>
-  <div class="row">
-    <div class="col">
-      <div class="plan1">
-          <div class="con">
-            <br><br>
-            <h4 style="font-size: 30px;">Básico</h4>
-            <img  style="opacity: 5;" src="assets/img/BAS.svg" width="150" height="80" alt="">
-            <br>
-            <h5>Entrená cuando quieras en tu gimnasio de elección</h5>
-            <br>
-            <h1 style="font-size: 70px;">$24.90</h1>
-            <br>
-            <p>Inscripción: Varía según la local
-              Mantenimiento anual: $49.90*</p>
-            <br>
-            <ul style="text-align: left; font-size: 15px;">
-              <h6>CONDICIONES</h6>
-              <li>Sin multa por cancelación</li><br>
-              <h6>BENEFICIOS INCLUIDOS</h6>
-              <li>Área de peso libre, peso integrado, cardio y clases grupales</li>
-              <li>Acceso a todas las áreas del gimnasio</li>
-              <li>Sin cargo por cancelación</li>
-              <li>Smart Fit App</li>
-              <li>Smart Fit Go</li>
-            </ul>
-            <br>
-            <button type="button" class="btn btn-dark" routerLink = "/form-components" routerLinkActive="active">Inscribirse</button>
-            <br><br><br>
+
+  <!-- modal -->
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    id="myModalmostrar">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">Info</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">Acción:</div>
+              <div class="col-md-6">ID</div>
+            </div>
+            <div class="row">
+              <div class="col-md-6" id="accion-modal"></div>
+              <div class="col-md-6" id="id-modal"></div>
+            </div>
           </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="plan2">
-        <div class="con">
-          <br><br>
-          <h4 style="font-size: 30px;">Estándar</h4>
-          <img  style="opacity: 5;"  src="assets/img/STA.svg" width="150" height="80" alt="">
-          <br>
-          <h5>Entrená cuando quieras en tu gimnasio de elección</h5>
-          <br>
-          <h1 style="font-size: 70px;">$36.90</h1>
-          <br>
-          <p>Inscripción: Varía según la local
-            Mantenimiento anual: $65.90*</p>
-          <br>
-          <ul style="text-align: left; font-size: 15px;">
-            <h6>CONDICIONES</h6>
-            <li>Sin multa por cancelación</li><br>
-            <h6>BENEFICIOS INCLUIDOS</h6>
-            <li>Área de peso libre, peso integrado, cardio y clases grupales</li>
-            <li>Acceso a todas las áreas del gimnasio</li>
-            <li>Sin cargo por cancelación</li>
-            <li>Camiseta Black Exclusiva</li>
-            <li>Invitar un amigo a entrenar</li>
-            <li>Smart Fit App</li>
-            <li>Smart Fit Go</li>
-          </ul>
-          <br>
-          <button type="button" class="btn btn-dark" routerLink = "/form-components" routerLinkActive="active">Inscribirse</button>
-          <br><br><br>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="plan3">
-        <div class="con">
-            <br><br>
-            <h4 style="font-size: 30px;">Avanzado</h4>
-            <img style="opacity: 5;" src="assets/img/F+.svg" width="150" height="80" alt="">
-            <br>
-            <h5>Entrená cuando quieras en tu gimnasio de elección</h5>
-            <br>
-            <h1 style="font-size: 70px;">$48.90</h1>
-            <br>
-            <p>Inscripción: Varía según la local
-              Mantenimiento anual: $86.90*</p>
-            <br>
-            <ul style="text-align: left; font-size: 15px;" >
-              <h6>CONDICIONES</h6>
-              <li>12 meses de fidelidad</li><br>
-              <h6>BENEFICIOS INCLUIDOS</h6>
-              <li>Área de peso libre, peso integrado, cardio y clases grupales</li>
-              <li>Acceso a todas las áreas del gimnasio</li>
-              <li>Acceso a otros Smart Fit en el mundo</li>
-              <li>Camiseta Black Exclusiva</li>
-              <li>Invitar un amigo a entrenar</li>
-              <li>Sillones de masaje</li>
-              <li>Camiseta Black Exclusiva</li>
-              <li>Smart Fit App</li>
-            <li>Smart Fit Go</li>
-            </ul>
-            <br>
-            <button type="button" class="btn btn-dark" routerLink = "/form-components" routerLinkActive="active">Inscribirse</button>
-            <br><br><br>
-          </div>
-      </div>
-    </div>
   </div>
-</div>
+</body>
+
+
+</html>
