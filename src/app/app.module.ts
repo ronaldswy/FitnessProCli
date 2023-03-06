@@ -12,7 +12,7 @@ import { FileuploadComponent } from './fileupload/fileupload.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 
-
+/*hola*/
 @NgModule({
   declarations: [
     AppComponent,
